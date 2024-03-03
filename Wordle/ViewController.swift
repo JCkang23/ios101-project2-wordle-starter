@@ -38,21 +38,29 @@ class ViewController: UIViewController,
                                              action: #selector(didTapSettingsButton))
     rightBarButtonItem.tintColor = .white
     navigationItem.rightBarButtonItem = rightBarButtonItem
-    // Exercise 5 Pt. 1 (optional): Add a button on the left-hand side of the navigation bar to reset the
-    // game with the current settings
-    // Tip 1: Look at how the `rightBarButton` is created and use it as an example. You may create a new
-    // function that gets called similar to `didTapSettingsButton`. Make use of the online documentation and
-    // CMD + click to learn more about what methods and properties you can use
-    // Tip 2: You'll want to use and implement `resetBoardWithCurrentSettings` inside of BoardController.swift
-    // in the function that you fire when the button is tapped
-    // START YOUR CODE HERE
-    // ...
-    // END YOUR CODE HERE
-  }
+    
+    
+    // Add a button on the left-hand side of the navigation bar to reset the game with the current settings
+
+      let leftBarButtonItem = UIBarButtonItem(title: "Reset",
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(didTapResetButton))
+          
+      leftBarButtonItem.tintColor = .red
+      navigationItem.leftBarButtonItem = leftBarButtonItem
+      }
   
-  @objc private func didTapSettingsButton() {
+   @objc private func didTapSettingsButton() {
     performSegue(withIdentifier: segueIdentifier, sender: nil)
-  }
+   }
+    
+    // Create a new function that gets called similar to `didTapSettingsButton`
+    // Implement `resetBoardWithCurrentSettings` inside of BoardController.swift in the function that you fire when the button is tapped
+        
+        @objc private func didTapResetButton() {
+            boardController.resetBoardWithCurrentSettings()
+        }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard segue.identifier == segueIdentifier else { return }
